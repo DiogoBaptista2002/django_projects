@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load qr_code %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Conta</h1>
+    {% qr_from_text i size="T" %}
+
+{% else %}
+    <h1>Conta</h1>
+    <h1>Faça o seu Login <a href="/login">Aqui</a></h1>
+{% endif %}
+{% endblock %}

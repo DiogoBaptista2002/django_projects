@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load blog_tags %}
+{% block content %}
+<h1>{{fc}}</h1>
+<div>
+    <p>{{fc.prato}}</p>
+    <p>{{fc.preco}}€</p>
+    {% if fc.preco <= request.user.balance %}
+        <a href="/refeicoes/{{fc.id}}/{{request.user.id}}" class="btn btn-success" role="button" aria-pressed="true">Comprar</a>
+    {% else %}
+    <p>Não tem saldo suficiente carrege a sua conta aqui <a href="/conta">Aqui</a></p>
+    {% endif %}
+</div>
+{% endblock %}

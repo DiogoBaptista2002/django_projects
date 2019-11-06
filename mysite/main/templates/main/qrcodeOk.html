@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1 style="color:rgb(236, 64, 122)">{{i}}</h1>
+{% else %}
+    <h1 style="color:rgb(236, 64, 122)">Faça o seu Login <a href="/login">Aqui</a></h1>
+{% endif %}
+{% endblock %}

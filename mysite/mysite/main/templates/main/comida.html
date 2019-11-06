@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h1>Lanches/Pequenos Almoços</h1>
+ <div class="list-group">
+        {% for object in ls.all %}
+        <a href="/comida/{{object.id}}/" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{object}}</h5>
+            <small>{{object.preco}} €</small>
+        </div>
+        <p class="mb-1">{{object.descricao}}</p>
+        <small></small>
+      </a>
+      {% endfor %}
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load blog_tags %}
+{% if b %}
+    <h1 style="color:rgb(236, 64, 122)">Conta: Admin</h1>
+    <h1 style="color:rgb(236, 64, 122)">Lista de encomendas:</h1>
+    <p>{{x | linebreaks}}</p>
+    <p></p>
+    <a href="/logout" class="btn btn-success" role="button" aria-pressed="true">Logout</a>
+    <a href="/delete/12345" class="btn btn-success" role="button" aria-pressed="true">Limpar Marcações</a>
+{% else %}
+    {% if user.is_authenticated %}
+        <h1 style="color:rgb(236, 64, 122)">Conta</h1>
+        <h1 style="color:rgb(236, 64, 122)">Saldo: {{request.user.balance}}€</h1>
+        <h1 style="color:rgb(236, 64, 122)">Compras:</h1>
+        <p></p>
+        {% for object in h %}
+        {% for w in u.all %}
+            {% if w.dia in object %}
+                <a href="{{request.user.id}}/refeicoes/{{w.id}}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"></h5>
+                    <small></small>
+                </div>
+                <p class="mb-1">{{object}}</p>
+                <small></small>
+                </a>
+            {% else %}
+            {% endif %}
+        {% endfor %}
+        {% for e in f.all %}
+            {% if e.comida in object %}
+                <a href="{{request.user.id}}/comida/{{e.id}}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"></h5>
+                    <small></small>
+                </div>
+                <p class="mb-1">{{object}}</p>
+                <small></small>
+                </a>
+            {% else %}
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <p></p>
+        <a href="/logout" class="btn btn-success" role="button" aria-pressed="true">Logout</a>
+    {% endif %}
+{% endif %}
+{% endblock %}
